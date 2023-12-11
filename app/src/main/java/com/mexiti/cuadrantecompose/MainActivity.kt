@@ -43,19 +43,50 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-/*
-@Composable
-fun CuadrantText(Title: String, content: String, color: Color  ){
 
+@Composable
+fun CuadrantText(
+    Title: String,
+    content: String, 
+    color: Color, 
+    modifier: Modifier = Modifier  ){
+    Column(
+       modifier = modifier
+           .fillMaxHeight()
+           .background(
+               color = color
+           )
+        ,
+        verticalArrangement = Arrangement.Center,
+
+
+    ) {
+        Text(text = Title ,
+            textAlign = TextAlign.Center,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp)
+
+        )
+        Text(text = content,
+            textAlign = TextAlign.Justify,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp)
+
+
+        )
+    }
 }
-*/
+
 
 
 @Composable
 fun DivideCompose( modifier: Modifier = Modifier) {
 
     Column(
-        Modifier.fillMaxHeight(),
+        Modifier.fillMaxSize(),
     ) {
         Row(
             Modifier
@@ -63,57 +94,19 @@ fun DivideCompose( modifier: Modifier = Modifier) {
                 .weight(weight = 0.5F)
 
         ){
-            Column(
-                Modifier
-                    .weight(weight = 0.5F)
-                    .fillMaxHeight()
-                    .background(
-                        Color(0xFFEADDFF)
-                    )
-                ,
-                verticalArrangement = Arrangement.Center
+            CuadrantText(
+                Title = stringResource(id = R.string.text_composable)
+                , content = stringResource(id = R.string.display_text_composable)  ,
+                color =Color(0xFFEADDFF),
+                modifier = Modifier.weight(weight = 0.5F)
+            )
+            CuadrantText(
+                Title = stringResource(id = R.string.image_composable)
+                , content = stringResource(id = R.string.display_image_composable)  ,
+                color =Color(0xFFD0BCFF),
+                modifier = Modifier.weight(weight = 0.5F)
+            )
 
-            ) {
-                Text(text = stringResource(id = R.string.text_composable) ,
-                    textAlign = TextAlign.Center,
-                    fontWeight = FontWeight.Bold
-                    ,
-                    modifier = modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp)
-                )
-                Text(text = stringResource(id = R.string.display_text_composable),
-                    textAlign = TextAlign.Justify,
-                    modifier = modifier
-                        .fillMaxWidth()
-                        .padding(16.dp)
-
-                )
-            }
-            Column(
-                Modifier
-                    .weight(weight = 0.5F)
-                    .fillMaxHeight()
-                    .background(Color(0xFFD0BCFF))
-                ,
-                verticalArrangement = Arrangement.Center
-
-            ) {
-                Text(text = stringResource(id = R.string.image_composable),
-                    fontWeight = FontWeight.Bold
-                    ,
-                    textAlign = TextAlign.Center,
-                    modifier = modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp)
-                )
-                Text(text = stringResource(id = R.string.display_image_composable),
-                    textAlign = TextAlign.Justify,
-                    modifier = modifier
-                        .fillMaxWidth()
-                        .padding(16.dp)
-                )
-            }
         }
         Row(
             Modifier
@@ -122,57 +115,19 @@ fun DivideCompose( modifier: Modifier = Modifier) {
             ,
             verticalAlignment = Alignment.CenterVertically
         ){
-            Column(
-                Modifier
-                    .weight(weight = 0.5F)
-                    .fillMaxHeight()
-                    .background(
-                        Color(0xFFB69DF8)
-                    )
+            CuadrantText(Title = stringResource(id = R.string.row_composable)
                 ,
-                verticalArrangement = Arrangement.Center
-
-            ) {
-                Text(text = stringResource(id = R.string.row_composable),
-                    fontWeight = FontWeight.Bold
-                    ,
-                    textAlign = TextAlign.Center,
-                    modifier = modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp)
-
-                )
-                Text(text = stringResource(id =  R.string.display_row_composable),
-                    textAlign = TextAlign.Justify,
-                    modifier = modifier
-                        .fillMaxWidth()
-                        .padding(16.dp)
-                    )
-            }
-            Column(
-                Modifier
-                    .weight(weight = 0.5F)
-                    .fillMaxHeight()
-                    .background(Color(0xFFF6EDFF))
+                content = stringResource(id = R.string.display_row_composable) ,
+                color = Color(0xFFB69DF8),
+                modifier = Modifier.weight(weight = 0.5F)
+            )
+            CuadrantText(Title = stringResource(id = R.string.column_composable)
                 ,
-                verticalArrangement = Arrangement.Center
+                content = stringResource(id = R.string.display_column_composable) ,
+                color = Color(0xFFF6EDFF),
+                modifier = Modifier.weight(weight = 0.5F)
+            )
 
-            ) {
-                Text(text = stringResource(id = R.string.column_composable),
-                    fontWeight = FontWeight.Bold
-                    ,
-                    textAlign = TextAlign.Center,
-                    modifier = modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp)
-                )
-                Text(text = stringResource(id = R.string.display_column_composable),
-                    textAlign = TextAlign.Justify,
-                    modifier = modifier
-                        .fillMaxWidth()
-                        .padding(16.dp)
-                    )
-            }
         }
 
 
